@@ -16,6 +16,7 @@ class PvFusionSolar:
         self.logger.info("Requesting data from FusionSolar Kiosk API...")
 
         try:
+            self.logger.info(f"{self.conf.fusionsolarurl}{self.conf.fusionsolarkkid}")
             response = requests.get(
                 f"{self.conf.fusionsolarurl}{self.conf.fusionsolarkkid}",
                 verify=False

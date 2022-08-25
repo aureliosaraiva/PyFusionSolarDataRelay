@@ -4,7 +4,6 @@ import time
 from threading import Thread
 from pvconf import PvConf
 from pvrelay import PvRelay
-from gridrelay import GridRelay
 
 # Logger
 logger = logging.getLogger()
@@ -27,14 +26,9 @@ else:
 # Start PvRelay and KenterRelay
 try:
     if __name__ == '__main__':
-        if conf.fusionsolar:
-            fs_thread = Thread(target = PvRelay, args=[conf, logger])
-            fs_thread.daemon = True
-            fs_thread.start()
-        if conf.gridrelay:
-            gr_thread = Thread(target = GridRelay, args=[conf, logger])
-            gr_thread.daemon = True
-            gr_thread.start()
+        fs_thread = Thread(target = PvRelay, args=[conf, logger])
+        fs_thread.daemon = True
+        fs_thread.start()
     while True:
         time.sleep(1)
 except KeyboardInterrupt:
